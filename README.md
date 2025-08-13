@@ -1,29 +1,26 @@
 # ENS Subgraph migration to Squid SDK
 
-This is a submission from @yat1ma30 for the [ENS Subgraph migration to Squid SDK](https://github.com/subsquid-quests/ens-subgraph-migration/tree/main).
+This template demonstrates the use of Squid SDK's GraphQL server with The Graph Protocol's Subgraph GraphQL dialect. 
 
 ## Playground
 
-I have deployed this squid to Aquarium (changed squid name).
-
-https://squid.subsquid.io/yat1ma30-ens/v/v1/graphql
+You can test the squid with subgraph dialect here - https://void.squids.live/ens-squid:prod/api/graphql.
 
 ## Quick start
 
 Dependencies: Node.js, Docker.
 
 ```bash
-npm i -g @subsquid/cli
 npm ci
-sqd build
-sqd up
-sqd process
+npm run build
+npm run db:up
+npm run process
 ```
 
 To start the GraphQL server with The Graph dialect (subgraph-compatible queries), open a separate terminal and run:
 
 ```bash
-sqd serve
+npm run serve
 ```
 
 Note: The GraphQL server now supports The Graph subgraph query syntax (e.g., `first`, `orderBy`, `orderDirection`) for easy migration from subgraphs.
@@ -42,22 +39,37 @@ Details: https://docs.subsquid.io/
 
 ```bash
 # Generate TypeScript types from schema
-sqd codegen
+npm run codegen
 
 # Build the project
-sqd build
+npm run build
 
 # Start database
-sqd up
+npm run db:up
 
 # Run the processor
-sqd process
+npm run process
 
 # Start GraphQL server with The Graph dialect
-sqd serve
+npm run serve
 
 # Reset database (if needed)
-sqd down && sqd up
+npm run db:down && npm run db:up
+
+# Generate TypeScript classes for ABIs
+npm run typegen
+
+# Apply database migrations
+npm run migration:apply
+
+# Generate database migrations
+npm run migration:generate
+
+# Clean build artifacts
+npm run clean
+
+# Bump @subsquid packages to latest versions
+npm run bump
 ```
 
 ## Example

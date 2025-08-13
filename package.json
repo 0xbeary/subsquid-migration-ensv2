@@ -2,7 +2,23 @@
   "name": "squid-evm-template",
   "private": true,
   "scripts": {
-    "build": "rm -rf lib && tsc"
+    "clean": "npx --yes rimraf lib",
+    "build": "npm run clean && tsc",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down -v",
+    "migration:apply": "squid-typeorm-migration apply",
+    "migration:generate": "npm run build && npm run migration:clean && squid-typeorm-migration generate",
+    "migration:clean": "npx --yes rimraf ./db/migrations",
+    "migration": "npm run build && squid-typeorm-migration generate",
+    "codegen": "squid-typeorm-codegen",
+    "typegen": "squid-evm-typegen ./src/abi --glob='./abi/*.json' --multicall",
+    "process": "npm run build && npm run migration:apply && node --require=dotenv/config lib/main.js",
+    "process:prod": "npm run migration:apply && node lib/main.js",
+    "serve": "squid-graphql-server --dialect thegraph",
+    "serve:prod": "squid-graphql-server --dumb-cache in-memory --dumb-cache-ttl 1000 --dumb-cache-size 100 --dumb-cache-max-age 1000",
+    "check-updates": "npx --yes npm-check-updates --filter=/subsquid/ --upgrade",
+    "bump": "npm run check-updates && npm i -f",
+    "open": "npx --yes opener"
   },
   "dependencies": {
     "@subsquid/evm-processor": "^1.27.3",
