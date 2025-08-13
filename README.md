@@ -1,6 +1,6 @@
 # ENS Subgraph Migration to Squid SDK with Subgraph GraphQL Dialect
 
-This template demonstrates the use of Squid SDK's GraphQL server with The Graph Protocol's Subgraph GraphQL dialect. Starting with the `schema.graphql` file and using the GraphQL dialect, this squid demonstrates how to easily achieve parity with The Graph Protocol.
+This template demonstrates the use of Squid SDK's GraphQL server with The Graph Protocol's Subgraph GraphQL dialect. Starting with the `schema.graphql` file and using the GraphQL dialect, this squid demonstrates how to easily achieve parity with The Graph Protocol. This is achieved using Squid's GraphQL server with the built-in `--dialect thegraph` command when serving the data.
 
 ## Playground
 
