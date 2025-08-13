@@ -1,0 +1,39 @@
+manifestVersion: subsquid.io/v0.1
+name: ens-squid
+description: '[yat1ma30] ens migration'
+build:
+deploy:
+  env:
+    PORTAL_URL: ${{ addons.portal.ethereum_mainnet.http }}
+  addons:
+    postgres:
+    rpc:
+      - eth.http
+  processor:
+    cmd:
+      - node
+      - lib/main
+  api:
+    cmd:
+      - npx
+      - squid-graphql-server
+      - '--dialect'
+      - thegraph
+      - '--dumb-cache'
+      - in-memory
+      - '--dumb-cache-ttl'
+      - '1000'
+      - '--dumb-cache-size'
+      - '100'
+      - '--dumb-cache-max-age'
+      - '1000'
+scale:
+  dedicated: true
+  processor:
+    profile: large
+  api:
+    profile: small
+  addons:
+    postgres:
+      profile: large
+      storage: 60G
