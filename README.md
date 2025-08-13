@@ -1,6 +1,6 @@
-# ENS Subgraph migration to Squid SDK
+# ENS Subgraph Migration to Squid SDK with Subgraph GraphQL Dialect
 
-This template demonstrates the use of Squid SDK's GraphQL server with The Graph Protocol's Subgraph GraphQL dialect. 
+This template demonstrates the use of Squid SDK's GraphQL server with The Graph Protocol's Subgraph GraphQL dialect. Starting with the `schema.graphql` file and using the GraphQL dialect, this squid demonstrates how to easily achieve parity with The Graph Protocol.
 
 ## Playground
 
@@ -22,6 +22,21 @@ To start the GraphQL server with The Graph dialect (subgraph-compatible queries)
 ```bash
 npm run serve
 ```
+
+## Cloud Deployment
+
+For managed cloud deployment of the indexer to SQD Cloud, please refer to https://docs.sqd.ai/cloud/.
+
+For cloud deployment, you will need:
+
+1. The Subsquid CLI (only required for deployment):
+```bash
+npm i -g @subsquid/cli
+```
+
+2. An Auth key (which you can get from https://app.subsquid.io/squids)
+
+**Note**: The Subsquid CLI is only needed for cloud deployment. All local development can be done using the npm scripts above.
 
 Note: The GraphQL server now supports The Graph subgraph query syntax (e.g., `first`, `orderBy`, `orderDirection`) for easy migration from subgraphs.
 
