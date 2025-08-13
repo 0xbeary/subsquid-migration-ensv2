@@ -12,7 +12,6 @@ Dependencies: Node.js, Docker.
 
 ```bash
 npm ci
-npm run build
 npm run db:up
 npm run process
 ```

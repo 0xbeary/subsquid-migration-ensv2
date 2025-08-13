@@ -12,13 +12,13 @@ import * as mapping from './mapping'
 import {patchStore} from './patch'
 import {assertNotNull} from '@subsquid/util-internal'
 
+
 patchStore()
 export const processor = new EvmBatchProcessor()
-    //.setPortal(assertNotNull(
-    //    process.env.PORTAL_URL,
-    //    'Required env variable PORTAL_URL is missing'
-    //))
-    .setGateway('https://v2.archive.subsquid.io/network/ethereum-mainnet')
+    .setPortal(assertNotNull(
+       process.env.PORTAL_URL,
+       'Required env variable PORTAL_URL is missing'
+    ))
     .setRpcEndpoint({
         url: assertNotNull(
             process.env.RPC_ETH_HTTP,
@@ -35,7 +35,7 @@ export const processor = new EvmBatchProcessor()
         },
     })
     .setBlockRange({
-        from: 3327417, // oldest ens registry block
+        from: parseInt(process.env.FIRST_BLOCK || '3327417'), // fall back to the oldest ens registry block
         to: 23124003
     })
 
