@@ -6,6 +6,13 @@ This template demonstrates how to migrate from The Graph Protocol subgraphs to S
 
 You can test the squid with subgraph dialect here - https://void.squids.live/ens-squid:prod/api/graphql.
 
+
+## 2 Minute Walkthrough
+
+[<img src="https://github.com/user-attachments/assets/413aab58-1855-4a1f-a10c-77508bb13333"
+      alt="Graph parity demo"
+      width="750">](https://screen.studio/share/Q7r51SKJ)
+
 ## Quick start
 
 Dependencies: Node.js, Docker.
